@@ -41,6 +41,40 @@ class UI{
     }
 }
 
+class Storage{
+    static GetPosts(){
+        let posts
+        if (localStorage.getItem("posts")===null){
+            posts=[]
+        }
+        else {
+            posts=JSON.parse(localStorage.getItem("posts"))
+        }
+        return posts
+    }
+    static DisplayPosts(){
+        const posts=Storage.GetPosts()
+        posts.forEach(function (post){
+            const ui=new UI()
+            ui.AddPostToList(post)
+        })
+    }
+    static AddPosts(post){
+        const posts=Storage.GetPosts()
+        posts.push(post)
+        localStorage.setItem("posts",JSON.stringify(posts))
+    }
+    static DeletePots(title){
+        const posts=Storage.GetPosts()
+        posts.forEach(function (post,index){
+            if (post.title===title){
+                posts.splice(index,1)
+            }
+        })
+        localStorage.setItem("posts",JSON.stringify(posts))
+    }
+}
+
 document.getElementById("post-form").addEventListener("submit", function (e){
     const Title = document.getElementById("title").value;
     const Author = document.getElementById("author").value;
@@ -53,6 +87,7 @@ document.getElementById("post-form").addEventListener("submit", function (e){
         ui.ShowAlert("Please fill out all required fields.","danger")
     }else{
         ui.AddPostToList(post);
+        Storage.AddPosts(post)
         ui.ClearFields();
         ui.ShowAlert("post added successfully!","success")
     }
@@ -63,5 +98,9 @@ document.getElementById("post-form").addEventListener("submit", function (e){
 document.getElementById("post-list").addEventListener("click",function (e){
     const ui = new UI()
     ui.DeletePost(e.target)
+    const tr=e.target.parentElement.parentElement
+    const title=tr.firstElementChild.textContent
+    Storage.DeletePots(title)
     ui.ShowAlert("Deleted Successfully!","success")
 })
+document.addEventListener("DOMContentLoaded",Storage.DisplayPosts())
