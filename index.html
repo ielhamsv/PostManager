@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Manager</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+<!-- HEADER SECTION -->
+<header class="text-center p-3 mb-3">
+    <h1>POST MANAGER</h1>
+</header>
+<!-- FORM SECTION -->
+<section>
+    <div class="container bg-light p-4 rounded-3">
+        <div class="row justify-content-center align-items-center">
+            <div class="col-md-8 text-center">
+                <h2>Add New Post</h2>
+            </div>
+            <div class="col-md-8">
+                <form id="post-form">
+                    <div class="mb-3">
+                        <label  for="title" class="form-label">Post Title</label>
+                        <input type="text" class="form-control" id="title">
+                    </div>
+                    <div class="mb-3">
+                        <label  for="author" class="form-label">Post Author</label>
+                        <input type="text" class="form-control" id="author">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea class="form-control" id="content" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-outline-dark w-100">Add Post</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TABLE SECTION -->
+<section class="mt-5">
+    <div class="container p-4 rounded-3 bg-body-secondary">
+        <table class="table text-center border-white">
+            <thead>
+            <tr>
+                <th class="bg-body-secondary" scope="col">Title</th>
+                <th class="bg-body-secondary" scope="col">Author</th>
+                <th class="bg-body-secondary" scope="col">content</th>
+                <th class="bg-body-secondary" scope="col">Delete</th>
+            </tr>
+            </thead>
+
+            <tbody id="post-list">
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</body>
+</html>

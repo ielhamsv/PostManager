@@ -1,0 +1,19 @@
+{
+  "name": "postmanager",
+  "version": "1.0.0",
+  "description": "To provide a practical example of OOP in JavaScript while building a functional post management system",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass -w assets/sass/styles.scss assets/css/styles.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.77.6"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "remixicon": "^4.3.0"
+  }
+}
