@@ -18,6 +18,19 @@ class UI{
         `
         list.appendChild(row)
 }
+
+    ShowAlert(message,ClassName){
+        const alert=document.createElement("div")
+        alert.className=`alert alert-${ClassName}`
+        alert.appendChild(document.createTextNode(message))
+        const place = document.getElementById("place")
+        const h2 = place.querySelector("h2")
+        place.insertBefore(alert,h2)
+
+        setTimeout(function (){
+            document.querySelector(".alert").remove()
+        },3000)
+    }
     ClearFields(){
         document.getElementById("title").value="";
         document.getElementById("author").value="";
@@ -31,10 +44,16 @@ document.getElementById("post-form").addEventListener("submit", function (e){
     const Content = document.getElementById("content").value;
 
     const post= new Post(Title,Author,Content);
-
     const ui = new UI();
-    ui.AddPostToList(post);
-    ui.ClearFields();
+
+    if(Title==="" || Author==="" || Content===""){
+        ui.ShowAlert("Please fill out all required fields.","danger")
+    }else{
+        ui.AddPostToList(post);
+        ui.ClearFields();
+        ui.ShowAlert("post added successfully!","success")
+    }
+
 
     e.preventDefault()
 })
