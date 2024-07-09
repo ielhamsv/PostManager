@@ -36,6 +36,9 @@ class UI{
         document.getElementById("author").value="";
         document.getElementById("content").value="";
     }
+    DeletePost(target){
+        target.parentElement.parentElement.remove()
+    }
 }
 
 document.getElementById("post-form").addEventListener("submit", function (e){
@@ -56,4 +59,9 @@ document.getElementById("post-form").addEventListener("submit", function (e){
 
 
     e.preventDefault()
+})
+document.getElementById("post-list").addEventListener("click",function (e){
+    const ui = new UI()
+    ui.DeletePost(e.target)
+    ui.ShowAlert("Deleted Successfully!","success")
 })
