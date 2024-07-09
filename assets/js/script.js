@@ -14,7 +14,7 @@ class UI{
         <th>${post.title}</th>
         <td>${post.author}</td>
         <td>${post.content}</td>
-        <td><i class="ri-delete-bin-line text-danger"></i></td>
+        <td><i class="ri-delete-bin-line text-danger delete"></i></td>
         `
         list.appendChild(row)
 }
@@ -97,7 +97,8 @@ document.getElementById("post-form").addEventListener("submit", function (e){
 })
 document.getElementById("post-list").addEventListener("click",function (e){
     const ui = new UI()
-    ui.DeletePost(e.target)
+    if (e.target.classList.contains("delete")){
+    ui.DeletePost(e.target)}
     const tr=e.target.parentElement.parentElement
     const title=tr.firstElementChild.textContent
     Storage.DeletePots(title)
